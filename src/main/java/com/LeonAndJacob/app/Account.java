@@ -1,9 +1,5 @@
 package com.LeonAndJacob.app;
 
-/**
- * Hello world!
- *
- */
 public class Account
 {
     private int accountNumber;
@@ -12,8 +8,7 @@ public class Account
 
     private long accountBalance;
 
-    public boolean adjustBalance(long amount)
-    {
-         return true;
+    public boolean adjustBalance(long amount) {
+        return false;
     }
 }
