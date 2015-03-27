@@ -27,8 +27,16 @@ public class Testing  {
     }
 
     @Test
-    public void adjusdBalanceNegativelyTest()
+    public void adjustBalanceNegativelyTest()
     {
         Assert.assertEquals(true, acc.adjustBalance(-300));
     }
+
+    @Test
+    public void adjustBalancePositivelyTest()
+    {
+        Assert.assertEquals(true, acc.adjustBalance(300));
+    }
+
+
 }

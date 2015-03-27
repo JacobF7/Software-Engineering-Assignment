@@ -9,6 +9,6 @@ public class Account
     private long accountBalance;
 
     public boolean adjustBalance(long amount) {
-        return false;
+       throw new UnsupportedOperationException();
     }
 }
