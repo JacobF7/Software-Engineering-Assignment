@@ -38,5 +38,27 @@ public class Testing  {
         Assert.assertEquals(true, acc.adjustBalance(300));
     }
 
+    @Test
+    public void getAccountTestNegatively()
+    {
+        final Account return_acc = new Account();
+
+        Assert.assertEquals(return_acc,acc_db.getAccount(-25));
+    }
+
+    @Test
+    public void getAccountTestPositively()
+    {
+        final Account return_acc = new Account();
+
+        Assert.assertEquals(return_acc,acc_db.getAccount(25));
+    }
+
+    @Test
+    public void getSizeTest()
+    {
+        Assert.assertEquals(0,acc_db.getSize());
+    }
+
 
 }
