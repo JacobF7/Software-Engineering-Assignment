@@ -21,6 +21,6 @@ public class AccountTest  {
     public void adjusdBalanceNegativelyTest()
     {
 
-        Assert.assertEquals(false, acc.adjustBalance(-100));
+        Assert.assertEquals(false, acc.adjustBalance(-300));
     }
 }
