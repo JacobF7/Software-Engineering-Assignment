@@ -19,6 +19,6 @@ public class AccountDatabase
 
     public int getSize()
     {
-        throw new UnsupportedOperationException();
+        return account_database.size();
     }
 }
