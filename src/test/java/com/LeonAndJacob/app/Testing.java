@@ -40,20 +40,18 @@ public class Testing  {
         Assert.assertEquals(true, acc.adjustBalance(300));
     }
 
+    /*
     @Test
     public void getAccountTestNegatively()
     {
-        final Account return_acc = new Account();
-
-        Assert.assertEquals(return_acc,acc_db.getAccount(-25));
+        Assert.assertEquals(acc,acc_db.getAccount(-1));
     }
+    */
 
     @Test
     public void getAccountTestPositively()
     {
-        final Account return_acc = new Account();
-
-        Assert.assertEquals(return_acc,acc_db.getAccount(25));
+        Assert.assertEquals(acc,acc_db.getAccount(1));
     }
 
     @Test

@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3ac603ec-3d61-4f29-9588-27b610802a7d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/Account.java" afterPath="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/Account.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/AccountDatabase.java" afterPath="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/AccountDatabase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java" afterPath="$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LeonAndJacob-app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,17 +29,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Testing.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Testing.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1200">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.63172805" vertical-offset="527" max-vertical-offset="1215">
+              <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#599#600#0" expanded="true" />
                 <element signature="e#666#667#0" expanded="true" />
                 <element signature="e#729#730#0" expanded="true" />
                 <element signature="e#794#795#0" expanded="true" />
+                <element signature="e#990#991#0" expanded="true" />
+                <element signature="e#1051#1052#0" expanded="true" />
+                <element signature="e#1098#1099#0" expanded="true" />
+                <element signature="e#1153#1154#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,20 +74,22 @@
       <file leaf-file-name="AccountDatabase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/AccountDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="450">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding>
                 <element signature="e#192#201#0" expanded="true" />
+                <element signature="e#351#352#0" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Account.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Account.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.101983" vertical-offset="91" max-vertical-offset="630">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="630">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#203#204#0" expanded="true" />
                 <element signature="e#259#260#0" expanded="true" />
@@ -111,8 +115,8 @@
         <option value="$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/AccountTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/TransactionManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/AccountDatabase.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/Account.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java" />
       </list>
     </option>
   </component>
@@ -484,7 +488,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="77" y="44" width="1159" height="659" extended-state="1" />
+    <frame x="77" y="44" width="1159" height="659" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -547,6 +551,10 @@
             <element signature="e#666#667#0" expanded="true" />
             <element signature="e#729#730#0" expanded="true" />
             <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -575,6 +583,8 @@
           <caret line="18" column="50" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="50" />
           <folding>
             <element signature="e#192#201#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -589,6 +599,10 @@
             <element signature="e#666#667#0" expanded="true" />
             <element signature="e#729#730#0" expanded="true" />
             <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,6 +635,10 @@
             <element signature="e#666#667#0" expanded="true" />
             <element signature="e#729#730#0" expanded="true" />
             <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -653,6 +671,10 @@
             <element signature="e#666#667#0" expanded="true" />
             <element signature="e#729#730#0" expanded="true" />
             <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,6 +707,10 @@
             <element signature="e#666#667#0" expanded="true" />
             <element signature="e#729#730#0" expanded="true" />
             <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -704,16 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/AccountDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#192#201#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/TransactionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
@@ -724,27 +740,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="630">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#203#204#0" expanded="true" />
+            <element signature="e#259#260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/AccountDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="450">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="e#192#201#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1200">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.63172805" vertical-offset="527" max-vertical-offset="1215">
+          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#599#600#0" expanded="true" />
             <element signature="e#666#667#0" expanded="true" />
             <element signature="e#729#730#0" expanded="true" />
             <element signature="e#794#795#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.101983" vertical-offset="91" max-vertical-offset="630">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-          <folding>
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
           </folding>
         </state>
       </provider>
