@@ -30,7 +30,37 @@ public class Account
         accountName = null;
 
         accountBalance = 0;
-
-
     }
+
+    public void set_Account_Number(int account_Number_in)
+    {
+        this.accountNumber=account_Number_in;
+    }
+
+    public void  set_Account_Name(String account_Name_in)
+    {
+        this.accountName=account_Name_in;
+    }
+
+    public  void set_Account_Balance(int account_Balance_in)
+    {
+        this.accountBalance=account_Balance_in;
+    }
+
+    public int get_Account_Number(int account_Number_in)
+    {
+        return this.accountNumber;
+    }
+
+    public String get_Account_Name(String account_Name_in)
+    {
+        return this.accountName;
+    }
+
+    public  long get_Account_Balance(int account_Balance_in)
+    {
+        return this.accountBalance;
+    }
+
+
 }
