@@ -25,14 +25,13 @@ public class Testing  {
 
         trans_mang = new TransactionManager();
 
-        acc = new Account(acc_db.getSize(),"Jacob&Leon",100);
-
-        acc2 = new Account(acc_db.getSize(),"Jacob&Leon2",100);
+        acc = new Account(acc_db.getSize()+1,"Jacob&Leon",100);
 
         acc_db.account_database.add(acc);
 
-        acc_db.account_database.add(acc2);
+        acc2 = new Account(acc_db.getSize()+1,"Jacob&Leon2",1000);
 
+        acc_db.account_database.add(acc2);
     }
 
     @Test

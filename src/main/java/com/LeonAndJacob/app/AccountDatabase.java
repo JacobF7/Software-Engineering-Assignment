@@ -12,8 +12,19 @@ public class AccountDatabase
 
     public Account getAccount(int accountNumber)
     {
+        int i =0;
 
-        throw new UnsupportedOperationException();
+        Account returned = null;
+
+       for(i =0; i<account_database.size(); i++)
+       {
+           if(accountNumber == account_database.get(i).get_Account_Number())
+           {
+               returned = account_database.get(i);
+           }
+       }
+
+       return returned;
 
     }
 
