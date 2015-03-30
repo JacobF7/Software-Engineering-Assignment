@@ -9,7 +9,7 @@ import org.junit.Before;
  */
 public class Testing  {
 
-    Account acc;
+    Account acc,acc2;
     AccountDatabase acc_db;
     Transaction trans;
     TransactionManager trans_mang;
@@ -26,6 +26,12 @@ public class Testing  {
         trans_mang = new TransactionManager();
 
         acc = new Account(acc_db.getSize(),"Jacob&Leon",100);
+
+        acc2 = new Account(acc_db.getSize(),"Jacob&Leon2",100);
+
+        acc_db.account_database.add(acc);
+
+        acc_db.account_database.add(acc2);
     }
 
     @Test
@@ -57,7 +63,7 @@ public class Testing  {
     @Test
     public void getSizeTest()
     {
-        Assert.assertEquals(0,acc_db.getSize());
+        Assert.assertEquals(2,acc_db.getSize());
     }
 
     @Test
