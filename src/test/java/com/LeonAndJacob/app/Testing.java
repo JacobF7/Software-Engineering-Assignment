@@ -89,13 +89,13 @@ public class Testing  {
     @Test
     public void processTransactionManagerWithdrawCaseA()
     {
-        Assert.assertEquals(true,trans_mang.processTransaction(1,2,200));
+        Assert.assertEquals(true,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
 
     @Test
     public void processTransactionManagerWithdrawCaseB()
     {
-        Assert.assertEquals(false,trans_mang.processTransaction(1,2,200));
+        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),200));
     }
 
 }
