@@ -17,19 +17,21 @@ public class Testing  {
     @Before
     public void Setup()
     {
-        acc = new Account();
+        //acc = new Account();
 
         acc_db = new AccountDatabase();
 
         trans = new Transaction();
 
         trans_mang = new TransactionManager();
+
+        acc = new Account(acc_db.getSize(),"Jacob&Leon",100);
     }
 
     @Test
     public void adjustBalanceNegativelyTest()
     {
-        Assert.assertEquals(true, acc.adjustBalance(-300));
+        Assert.assertEquals(false, acc.adjustBalance(-300));
     }
 
     @Test
