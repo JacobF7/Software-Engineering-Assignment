@@ -1,21 +1,23 @@
 package com.LeonAndJacob.app;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Assert;
-import org.junit.Before;
+
 
 /**
  * Unit test for simple App.
  */
 public class Testing  {
 
-    Account acc,acc2;
-    AccountDatabase acc_db;
-    Transaction trans,trans2;
-    TransactionManager trans_mang;
+    static Account acc,acc2;
+    static AccountDatabase acc_db;
+    static Transaction trans;
+    static TransactionManager trans_mang;
 
-    @Before
-    public void Setup()
+    @BeforeClass
+    public static void SetupBeforeClass()
     {
         //acc = new Account();
 
@@ -32,6 +34,17 @@ public class Testing  {
         acc2 = new Account(acc_db.getSize()+1,"Jacob&Leon2",1000);
 
         acc_db.account_database.add(acc2);
+    }
+
+    @Before
+    public void SetupBefore()
+    {
+
+        acc.set_Account_Balance(100);
+
+
+        acc2.set_Account_Balance(1000);
+
     }
 
     @Test

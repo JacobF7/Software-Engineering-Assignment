@@ -22,6 +22,21 @@ public class Transaction
 
     public boolean process()
     {
-        throw new UnsupportedOperationException();
+       boolean result;
+
+        boolean withdrawal = (AccountDatabase.getAccount(sourceAccountNumber)).adjustBalance(-(this.amount));
+
+        if(withdrawal==false)
+        {
+            result=false;
+        }
+        else
+        {
+            boolean deposit = (AccountDatabase.getAccount(destinationAccountNumber)).adjustBalance(this.amount);
+
+            result = true;
+        }
+
+       return result;
     }
 }
