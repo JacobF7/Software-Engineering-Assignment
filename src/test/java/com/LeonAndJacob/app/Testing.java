@@ -11,7 +11,7 @@ public class Testing  {
 
     Account acc,acc2;
     AccountDatabase acc_db;
-    Transaction trans;
+    Transaction trans,trans2;
     TransactionManager trans_mang;
 
     @Before
@@ -21,7 +21,7 @@ public class Testing  {
 
         acc_db = new AccountDatabase();
 
-        trans = new Transaction();
+        //trans = new Transaction();
 
         trans_mang = new TransactionManager();
 
@@ -32,6 +32,7 @@ public class Testing  {
         acc_db.account_database.add(acc);
 
         acc_db.account_database.add(acc2);
+
     }
 
     @Test
@@ -64,6 +65,25 @@ public class Testing  {
     public void getSizeTest()
     {
         Assert.assertEquals(2,acc_db.getSize());
+    }
+
+    @Test
+    public void processTestA()
+    {
+        //pass transaction
+        trans = new Transaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
+
+        Assert.assertEquals(true,trans.process());
+
+    }
+
+    @Test
+    public void processTestB()
+    {
+        //failed transaction
+        trans = new Transaction(acc.get_Account_Number(),acc2.get_Account_Number(),200);
+
+        Assert.assertEquals(false,trans.process());
     }
 
     @Test

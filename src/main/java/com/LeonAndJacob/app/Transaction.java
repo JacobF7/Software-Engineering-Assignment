@@ -10,4 +10,18 @@ public class Transaction
     private int destinationAccountNumber;
 
     private long amount;
+
+    public Transaction(int source_Account_Number_In,int destination_Account_Number_In,long amount_in)
+    {
+        this.sourceAccountNumber=source_Account_Number_In;
+
+        this.destinationAccountNumber=destination_Account_Number_In;
+
+        this.amount=amount_in;
+    }
+
+    public boolean process()
+    {
+        throw new UnsupportedOperationException();
+    }
 }

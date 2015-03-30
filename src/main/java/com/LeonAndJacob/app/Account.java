@@ -47,17 +47,17 @@ public class Account
         this.accountBalance=account_Balance_in;
     }
 
-    public int get_Account_Number(int account_Number_in)
+    public int get_Account_Number()
     {
         return this.accountNumber;
     }
 
-    public String get_Account_Name(String account_Name_in)
+    public String get_Account_Name()
     {
         return this.accountName;
     }
 
-    public  long get_Account_Balance(int account_Balance_in)
+    public  long get_Account_Balance()
     {
         return this.accountBalance;
     }
