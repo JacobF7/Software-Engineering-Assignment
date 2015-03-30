@@ -9,6 +9,20 @@ public class TransactionManager
 
     public boolean processTransaction(int src, int dst, int amount)
     {
-        throw new UnsupportedOperationException();
+        Transaction trans = new Transaction(src,dst,amount);
+
+        boolean outcome;
+
+        if(trans.process()==true)
+        {
+            this.numTransactionsProcessed++;
+            outcome=true;
+        }
+        else
+        {
+            outcome =false;
+        }
+
+        return outcome;
     }
 }
