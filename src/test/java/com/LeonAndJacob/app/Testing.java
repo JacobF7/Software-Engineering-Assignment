@@ -60,5 +60,16 @@ public class Testing  {
         Assert.assertEquals(0,acc_db.getSize());
     }
 
+    @Test
+    public void processTransactionManagerWithdrawCaseA()
+    {
+        Assert.assertEquals(true,trans_mang.processTransaction(1,2,200));
+    }
+
+    @Test
+    public void processTransactionManagerWithdrawCaseB()
+    {
+        Assert.assertEquals(false,trans_mang.processTransaction(1,2,200));
+    }
 
 }

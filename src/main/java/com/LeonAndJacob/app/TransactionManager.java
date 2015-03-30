@@ -7,4 +7,8 @@ public class TransactionManager
 {
     private int numTransactionsProcessed;
 
+    public boolean processTransaction(int src, int dst, int amount)
+    {
+        throw new UnsupportedOperationException();
+    }
 }
