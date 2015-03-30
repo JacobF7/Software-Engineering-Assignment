@@ -10,7 +10,22 @@ public class Account
 
     public boolean adjustBalance(long amount)
     {
-       throw new UnsupportedOperationException();
+        boolean outcome=false;
+
+        long new_balance = this.accountBalance + amount;
+
+        if(new_balance>=0)
+        {
+            this.accountBalance= new_balance;
+
+            outcome= true;
+        }
+        else
+        {
+            outcome= false;
+        }
+
+        return outcome;
     }
 
     public Account(int account_Number,String Name,long initialBalance)
