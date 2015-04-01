@@ -10,7 +10,7 @@ public class Account
 
     public boolean adjustBalance(long amount)
     {
-        boolean outcome=false;
+        boolean outcome;
 
         long new_balance = this.accountBalance + amount;
 

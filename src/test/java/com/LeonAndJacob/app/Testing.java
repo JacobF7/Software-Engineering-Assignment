@@ -11,7 +11,7 @@ import org.junit.Assert;
  */
 public class Testing  {
 
-    static Account acc,acc2;
+    static Account acc,acc2,acc3,acc4;
     static AccountDatabase acc_db;
     static Transaction trans;
     static TransactionManager trans_mang;
@@ -27,21 +27,20 @@ public class Testing  {
 
         trans_mang = new TransactionManager();
 
-        acc = new Account(acc_db.getSize()+1,"Jacob&Leon",100);
+        acc = new Account(1,"Jacob&Leon",100);
 
-        acc_db.account_database.add(acc);
+        acc2 = new Account(2,"Jacob&Leon2",1000);
 
-        acc2 = new Account(acc_db.getSize()+1,"Jacob&Leon2",1000);
+        Assert.assertEquals(true,acc_db.addAccount(acc));
 
-        acc_db.account_database.add(acc2);
+        Assert.assertEquals(true,acc_db.addAccount(acc2));
     }
 
     @Before
     public void SetupBefore()
     {
-
+        // Reset Balance Before Each Test
         acc.set_Account_Balance(100);
-
 
         acc2.set_Account_Balance(1000);
 
@@ -59,7 +58,28 @@ public class Testing  {
         Assert.assertEquals(true, acc.adjustBalance(300));
     }
 
-    /*
+    //Add Account Tests
+
+     /*@Test
+    public void AddAccountValid1()
+    {
+        Assert.assertEquals(true,acc_db.addAccount(acc));
+    }*/
+
+    /*@Test
+    public void AddAccountValid2()
+    {
+        Assert.assertEquals(true,acc_db.addAccount(acc2));
+    }*/
+
+
+    @Test
+    public void getAccountTest()
+    {
+        Assert.assertEquals(acc,acc_db.getAccount(1));
+    }
+
+     /*
     @Test
     public void getAccountTestNegatively()
     {
@@ -67,10 +87,35 @@ public class Testing  {
     }
     */
 
+    //Extra Add Account Test
+
+    /*
     @Test
-    public void getAccountTestPositively()
+    public void AddAccountValid()
     {
-        Assert.assertEquals(acc,acc_db.getAccount(1));
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+
+        Assert.assertEquals(true,acc_db.addAccount(acc3));
+    }
+    */
+
+    //Account Number Already Used
+    @Test
+    public void AddAccountInvalid1()
+    {
+        acc3 = new Account(2,"Jacob&Leon3",4000);
+
+        Assert.assertEquals(false,acc_db.addAccount(acc3));
+    }
+
+    //Negative Balance
+    @Test
+    public void AddAccountInvalid2()
+    {
+        acc4 = new Account(3,"Jacob&Leon4",-4000);
+
+        Assert.assertEquals(false,acc_db.addAccount(acc4));
     }
 
     @Test
@@ -78,6 +123,7 @@ public class Testing  {
     {
         Assert.assertEquals(2,acc_db.getSize());
     }
+
 
     @Test
     public void processTestA()
