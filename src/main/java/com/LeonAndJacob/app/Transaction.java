@@ -22,20 +22,35 @@ public class Transaction
 
     public boolean process()
     {
-       boolean result;
+        boolean result;
 
-        boolean withdrawal = (AccountDatabase.getAccount(sourceAccountNumber)).adjustBalance(-(this.amount));
+        Account src = AccountDatabase.getAccount(sourceAccountNumber);
 
-        if(withdrawal==false)
+        Account dst = AccountDatabase.getAccount(destinationAccountNumber);
+
+
+        if (src!=null && dst!= null)
         {
-            result=false;
+            boolean withdrawal = (AccountDatabase.getAccount(sourceAccountNumber)).adjustBalance(-(this.amount));
+
+            if(withdrawal==false)
+            {
+                result=false;
+            }
+            else
+            {
+                boolean deposit = (AccountDatabase.getAccount(destinationAccountNumber)).adjustBalance(this.amount);
+
+                //deposit should always be true as you are adjusting a balance positively
+                result = true;
+            }
         }
         else
         {
-            boolean deposit = (AccountDatabase.getAccount(destinationAccountNumber)).adjustBalance(this.amount);
-
-            result = true;
+            result= false;
         }
+
+
 
        return result;
     }

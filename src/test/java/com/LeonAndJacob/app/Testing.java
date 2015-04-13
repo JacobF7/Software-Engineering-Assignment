@@ -144,6 +144,16 @@ public class Testing  {
         Assert.assertEquals(false,trans.process());
     }
 
+    //Case Transaction Object is created with non existent Account, with Account Number 11
+    @Test
+    public void processTestC()
+    {
+        //failed transaction
+        trans = new Transaction(acc.get_Account_Number(),11,10);
+
+        Assert.assertEquals(false,trans.process());
+    }
+
     @Test
     public void processTransactionManagerWithdrawCaseA()
     {
@@ -161,8 +171,6 @@ public class Testing  {
     public void processTransactionManagerWithdrawCaseC() throws InterruptedException {
         trans_mang.processTransaction(acc.get_Account_Number(), acc2.get_Account_Number(), 30);
 
-        Thread.sleep(14000);
-
         Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
 
@@ -175,5 +183,6 @@ public class Testing  {
 
         Assert.assertEquals(true,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
+
 
 }
