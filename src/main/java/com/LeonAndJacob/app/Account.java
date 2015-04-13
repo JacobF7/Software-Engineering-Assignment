@@ -71,12 +71,11 @@ public class Account
         return this.accountNumber;
     }
 
-    /*
+
     public String get_Account_Name()
     {
         return this.accountName;
     }
-    */
 
     public  long get_Account_Balance()
     {

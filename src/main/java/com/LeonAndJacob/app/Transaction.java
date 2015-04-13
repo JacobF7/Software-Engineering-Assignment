@@ -41,8 +41,8 @@ public class Transaction
             {
                 boolean deposit = (AccountDatabase.getAccount(destinationAccountNumber)).adjustBalance(this.amount);
 
-                //deposit should always be true as you are adjusting a balance positively
-                result = true;
+                //deposit should always be true as you are adjusting a balance positively,i.e result =true
+                result = true&&deposit;
             }
         }
         else

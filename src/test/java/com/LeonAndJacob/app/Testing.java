@@ -166,17 +166,25 @@ public class Testing  {
         Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),200));
     }
 
-    //15 seconds Test Fail
+    //15 seconds Test Fail since "acc2",i.e.the destination account, previously made a transaction
     @Test
-    public void processTransactionManagerWithdrawCaseC() throws InterruptedException {
+    public void processTransactionManagerWithdrawCaseC() {
         trans_mang.processTransaction(acc.get_Account_Number(), acc2.get_Account_Number(), 30);
 
-        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
+        Assert.assertEquals(false,trans_mang.processTransaction(acc3.get_Account_Number(),acc2.get_Account_Number(),30));
+    }
+
+    //15 seconds Test Fail since "acc",i.e.the source account, previously made a transaction
+    @Test
+    public void processTransactionManagerWithdrawCaseD() {
+        trans_mang.processTransaction(acc.get_Account_Number(), acc2.get_Account_Number(), 30);
+
+        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc3.get_Account_Number(),30));
     }
 
     //15 seconds Test Pass
     @Test
-    public void processTransactionManagerWithdrawCaseD() throws InterruptedException {
+    public void processTransactionManagerWithdrawCaseE() throws InterruptedException {
         trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
 
         Thread.sleep(15000);
