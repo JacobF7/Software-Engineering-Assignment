@@ -156,13 +156,24 @@ public class Testing  {
         Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),200));
     }
 
-    //15 seconds Test
+    //15 seconds Test Fail
     @Test
-    public void processTransactionManagerWithdrawCaseC()
-    {
-        trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
+    public void processTransactionManagerWithdrawCaseC() throws InterruptedException {
+        trans_mang.processTransaction(acc.get_Account_Number(), acc2.get_Account_Number(), 30);
+
+        Thread.sleep(14000);
 
         Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
+    }
+
+    //15 seconds Test Pass
+    @Test
+    public void processTransactionManagerWithdrawCaseD() throws InterruptedException {
+        trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
+
+        Thread.sleep(15000);
+
+        Assert.assertEquals(true,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
 
 }
