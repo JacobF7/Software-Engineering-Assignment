@@ -156,4 +156,13 @@ public class Testing  {
         Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),200));
     }
 
+    //15 seconds Test
+    @Test
+    public void processTransactionManagerWithdrawCaseC()
+    {
+        trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
+
+        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
+    }
+
 }
