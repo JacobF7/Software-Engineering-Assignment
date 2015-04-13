@@ -38,6 +38,7 @@ public class Account
 
     }
 
+
     public Account()
     {
         accountNumber = 0;
@@ -46,6 +47,8 @@ public class Account
 
         accountBalance = 0;
     }
+
+
 
     public void set_Account_Number(int account_Number_in)
     {
@@ -57,6 +60,7 @@ public class Account
         this.accountName=account_Name_in;
     }
 
+
     public  void set_Account_Balance(int account_Balance_in)
     {
         this.accountBalance=account_Balance_in;
@@ -67,10 +71,12 @@ public class Account
         return this.accountNumber;
     }
 
+
     public String get_Account_Name()
     {
         return this.accountName;
     }
+
 
     public  long get_Account_Balance()
     {

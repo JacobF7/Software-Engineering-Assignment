@@ -20,6 +20,7 @@ public class LogItem
        this.Transaction_Time = Transaction_Time_In ;
     }
 
+    /*
     public void set_sourceAccountNumber(int sourceAccountNumber_In)
     {
         this.sourceAccountNumber=sourceAccountNumber_In;
@@ -35,6 +36,7 @@ public class LogItem
         this.Transaction_Time= Transaction_Time_in;
     }
 
+    */
     public int get_sourceAccountNumber()
     {
         return this.sourceAccountNumber;
