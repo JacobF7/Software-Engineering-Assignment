@@ -11,7 +11,7 @@ import org.junit.Assert;
  */
 public class Testing  {
 
-    static Account acc,acc2,acc3,acc4;
+    static Account acc,acc2,acc3;
     static AccountDatabase acc_db;
     static Transaction trans;
     static TransactionManager trans_mang;
@@ -19,21 +19,13 @@ public class Testing  {
     @BeforeClass
     public static void SetupBeforeClass()
     {
-        //acc = new Account();
-
         acc_db = new AccountDatabase();
-
-        //trans = new Transaction();
 
         trans_mang = new TransactionManager();
 
         acc = new Account(1,"Jacob&Leon",100);
 
         acc2 = new Account(2,"Jacob&Leon2",1000);
-
-        Assert.assertEquals(true,acc_db.addAccount(acc));
-
-        Assert.assertEquals(true,acc_db.addAccount(acc2));
     }
 
     @Before
@@ -43,9 +35,10 @@ public class Testing  {
         acc.set_Account_Balance(100);
 
         acc2.set_Account_Balance(1000);
-
     }
 
+
+    //Account Class Tests
     @Test
     public void adjustBalanceNegativelyTest()
     {
@@ -58,52 +51,21 @@ public class Testing  {
         Assert.assertEquals(true, acc.adjustBalance(300));
     }
 
-    //Add Account Tests
 
-     /*@Test
-    public void AddAccountValid1()
-    {
-        Assert.assertEquals(true,acc_db.addAccount(acc));
-    }*/
+    //AccountDatabase Class Tests
 
-    /*@Test
-    public void AddAccountValid2()
-    {
-        Assert.assertEquals(true,acc_db.addAccount(acc2));
-    }*/
-
-
-    @Test
-    public void getAccountTest()
-    {
-        Assert.assertEquals(acc,acc_db.getAccount(1));
-    }
-
-     /*
-    @Test
-    public void getAccountTestNegatively()
-    {
-        Assert.assertEquals(acc,acc_db.getAccount(-1));
-    }
-    */
-
-    //Extra Add Account Test
-
-    /*
     @Test
     public void AddAccountValid()
     {
-
-        acc3 = new Account(3,"Jacob&Leon3",2000);
-
-        Assert.assertEquals(true,acc_db.addAccount(acc3));
+        Assert.assertEquals(true,acc_db.addAccount(acc));
     }
-    */
 
     //Account Number Already Used
     @Test
     public void AddAccountInvalid1()
     {
+        acc_db.addAccount(acc2);
+
         acc3 = new Account(2,"Jacob&Leon3",4000);
 
         Assert.assertEquals(false,acc_db.addAccount(acc3));
@@ -113,18 +75,40 @@ public class Testing  {
     @Test
     public void AddAccountInvalid2()
     {
-        acc4 = new Account(3,"Jacob&Leon4",-4000);
+        acc3 = new Account(3,"Jacob&Leon4",-4000);
 
-        Assert.assertEquals(false,acc_db.addAccount(acc4));
+        Assert.assertEquals(false,acc_db.addAccount(acc3));
     }
+
+    @Test
+    public void getAccountTest()
+    {
+        Assert.assertEquals(acc,acc_db.getAccount(acc.get_Account_Number()));
+    }
+
+     /*
+    @Test
+    public void getAccountTestNegatively()
+    {
+        Assert.assertEquals(null,acc_db.getAccount(-1));
+    }
+    */
+
 
     @Test
     public void getSizeTest()
     {
-        Assert.assertEquals(2,acc_db.getSize());
+        //acc and acc2 were previously added, note that the database is static
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+
+        acc_db.addAccount(acc3);
+
+        Assert.assertEquals(3,acc_db.getSize());
     }
 
+    //Transaction Class Tests
 
+    //sufficient funds for transaction
     @Test
     public void processTestA()
     {
@@ -135,6 +119,7 @@ public class Testing  {
 
     }
 
+    //insufficient funds for transaction
     @Test
     public void processTestB()
     {
@@ -144,31 +129,43 @@ public class Testing  {
         Assert.assertEquals(false,trans.process());
     }
 
-    //Case Transaction Object is created with non existent Account, with Account Number 11
+    //Case Transaction Object is created with non existent Account, with Account Number 5
     @Test
     public void processTestC()
     {
         //failed transaction
-        trans = new Transaction(acc.get_Account_Number(),11,10);
+        trans = new Transaction(acc.get_Account_Number(),5,10);
 
         Assert.assertEquals(false,trans.process());
     }
 
+    //TransactionManager Class Tests
+
+    //insufficient funds for transaction
     @Test
-    public void processTransactionManagerWithdrawCaseA()
+    public void processTransactionManagerCaseA()
+    {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),200));
+    }
+
+    //sufficient funds for transaction
+    @Test
+    public void processTransactionManagerCaseB()
     {
         Assert.assertEquals(true,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
 
-    @Test
-    public void processTransactionManagerWithdrawCaseB()
-    {
-        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),200));
-    }
-
     //15 seconds Test Fail since "acc2",i.e.the destination account, previously made a transaction
     @Test
-    public void processTransactionManagerWithdrawCaseC() {
+    public void processTransactionManagerCaseC()
+    {
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+        acc_db.addAccount(acc3);
+
+
         trans_mang.processTransaction(acc.get_Account_Number(), acc2.get_Account_Number(), 30);
 
         Assert.assertEquals(false,trans_mang.processTransaction(acc3.get_Account_Number(),acc2.get_Account_Number(),30));
@@ -176,7 +173,8 @@ public class Testing  {
 
     //15 seconds Test Fail since "acc",i.e.the source account, previously made a transaction
     @Test
-    public void processTransactionManagerWithdrawCaseD() {
+    public void processTransactionManagerCaseD()
+    {
         trans_mang.processTransaction(acc.get_Account_Number(), acc2.get_Account_Number(), 30);
 
         Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc3.get_Account_Number(),30));
@@ -184,13 +182,13 @@ public class Testing  {
 
     //15 seconds Test Pass
     @Test
-    public void processTransactionManagerWithdrawCaseE() throws InterruptedException {
+    public void processTransactionManagerCaseE() throws InterruptedException
+    {
         trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
 
         Thread.sleep(15000);
 
         Assert.assertEquals(true,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
-
 
 }
