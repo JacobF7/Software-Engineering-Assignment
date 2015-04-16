@@ -16,7 +16,7 @@ public class Account
 
         if(new_balance>=0)
         {
-            this.accountBalance= new_balance;
+            this.set_Account_Balance(new_balance);
 
             outcome= true;
         }
@@ -51,7 +51,7 @@ public class Account
     }
 
     */
-    public  void set_Account_Balance(int account_Balance_in)
+    public  void set_Account_Balance(long account_Balance_in)
     {
         this.accountBalance=account_Balance_in;
     }
