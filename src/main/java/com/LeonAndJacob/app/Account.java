@@ -39,16 +39,6 @@ public class Account
     }
 
     /*
-    public Account()
-    {
-        accountNumber = 0;
-
-        accountName = null;
-
-        accountBalance = 0;
-    }
-
-
 
     public void set_Account_Number(int account_Number_in)
     {

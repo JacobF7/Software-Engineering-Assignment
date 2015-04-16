@@ -9,11 +9,19 @@ public class TransactionManager
 {
     private int numTransactionsProcessed;
 
+    private AccountDatabase database;
+
     private ArrayList<LogItem> Transaction_Log = new ArrayList<LogItem>();
+
+    protected TransactionManager(AccountDatabase database_in)
+    {
+        this.numTransactionsProcessed = 0;
+        this.database = database_in;
+    }
 
     public boolean processTransaction(int src, int dst, int amount)
     {
-        Transaction trans = new Transaction(src,dst,amount);
+        Transaction trans = new Transaction(this.database,src,dst,amount);
 
         boolean outcome=true;
 

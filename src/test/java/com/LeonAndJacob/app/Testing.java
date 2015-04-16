@@ -4,37 +4,44 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Assert;
-
+import org.powermock.core.classloader.annotations.PrepareForTest;
 
 /**
  * Unit test for simple App.
  */
 public class Testing  {
 
-    static Account acc,acc2,acc3;
-    static AccountDatabase acc_db;
-    static Transaction trans;
-    static TransactionManager trans_mang;
+    Account acc,acc2;
+    Account acc3;
+    AccountDatabase acc_db;
+    Transaction trans;
+    TransactionManager trans_mang;
 
-    @BeforeClass
+
+    /*@BeforeClass
     public static void SetupBeforeClass()
     {
-        acc_db = new AccountDatabase();
-
-        trans_mang = new TransactionManager();
-
         acc = new Account(1,"Jacob&Leon",100);
 
         acc2 = new Account(2,"Jacob&Leon2",1000);
-    }
+    }*/
+
 
     @Before
     public void SetupBefore()
     {
-        // Reset Balance Before Each Test
-        acc.set_Account_Balance(100);
+        acc_db = new AccountDatabase();
 
-        acc2.set_Account_Balance(1000);
+        trans_mang = new TransactionManager(acc_db);
+
+        acc = new Account(1,"Jacob&Leon",1000);
+
+        acc2 = new Account(2,"Jacob&Leon2",1000);
+
+        // Reset Balance Before Each Test
+        //acc.set_Account_Balance(100);
+
+        //acc2.set_Account_Balance(1000);
     }
 
 
@@ -42,7 +49,7 @@ public class Testing  {
     @Test
     public void adjustBalanceNegativelyTest()
     {
-        Assert.assertEquals(false, acc.adjustBalance(-300));
+        Assert.assertEquals(false, acc.adjustBalance(-3000));
     }
 
     @Test
@@ -83,6 +90,7 @@ public class Testing  {
     @Test
     public void getAccountTest()
     {
+        acc_db.addAccount(acc);
         Assert.assertEquals(acc,acc_db.getAccount(acc.get_Account_Number()));
     }
 
@@ -98,12 +106,10 @@ public class Testing  {
     @Test
     public void getSizeTest()
     {
-        //acc and acc2 were previously added, note that the database is static
-        acc3 = new Account(3,"Jacob&Leon3",2000);
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
 
-        acc_db.addAccount(acc3);
-
-        Assert.assertEquals(3,acc_db.getSize());
+        Assert.assertEquals(2,acc_db.getSize());
     }
 
     //Transaction Class Tests
@@ -112,19 +118,24 @@ public class Testing  {
     @Test
     public void processTestA()
     {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
         //pass transaction
-        trans = new Transaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
+        trans = new Transaction(acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),300);
 
         Assert.assertEquals(true,trans.process());
-
     }
 
     //insufficient funds for transaction
     @Test
     public void processTestB()
     {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
         //failed transaction
-        trans = new Transaction(acc.get_Account_Number(),acc2.get_Account_Number(),200);
+        trans = new Transaction(acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),2000);
 
         Assert.assertEquals(false,trans.process());
     }
@@ -133,8 +144,11 @@ public class Testing  {
     @Test
     public void processTestC()
     {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
         //failed transaction
-        trans = new Transaction(acc.get_Account_Number(),5,10);
+        trans = new Transaction(acc_db,acc.get_Account_Number(),5,10);
 
         Assert.assertEquals(false,trans.process());
     }
@@ -148,13 +162,16 @@ public class Testing  {
         acc_db.addAccount(acc);
         acc_db.addAccount(acc2);
 
-        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),200));
+        Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),2000));
     }
 
     //sufficient funds for transaction
     @Test
     public void processTransactionManagerCaseB()
     {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
         Assert.assertEquals(true,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
 
@@ -162,6 +179,9 @@ public class Testing  {
     @Test
     public void processTransactionManagerCaseC()
     {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
         acc3 = new Account(3,"Jacob&Leon3",2000);
         acc_db.addAccount(acc3);
 
@@ -175,6 +195,12 @@ public class Testing  {
     @Test
     public void processTransactionManagerCaseD()
     {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+        acc_db.addAccount(acc3);
+
         trans_mang.processTransaction(acc.get_Account_Number(), acc2.get_Account_Number(), 30);
 
         Assert.assertEquals(false,trans_mang.processTransaction(acc.get_Account_Number(),acc3.get_Account_Number(),30));
@@ -184,6 +210,9 @@ public class Testing  {
     @Test
     public void processTransactionManagerCaseE() throws InterruptedException
     {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
         trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
 
         Thread.sleep(15000);

@@ -7,10 +7,10 @@ import java.util.*;
  */
 public class AccountDatabase
 {
-    public static ArrayList<Account> account_database = new ArrayList<Account>();
+    public ArrayList<Account> account_database = new ArrayList<Account>();
 
 
-    public static Account getAccount(int accountNumber)
+    public Account getAccount(int accountNumber)
     {
         int i;
 
