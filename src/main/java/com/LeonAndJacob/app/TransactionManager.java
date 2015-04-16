@@ -33,7 +33,7 @@ public class TransactionManager
         {
             current_time = System.currentTimeMillis();
 
-            if(current_time-Transaction_Log.get(i).get_Transaction_Time()>15000)
+            if(current_time-(Transaction_Log.get(i).get_Transaction_Time())>=15000)
             {
                 Transaction_Log.remove(i);
             }
