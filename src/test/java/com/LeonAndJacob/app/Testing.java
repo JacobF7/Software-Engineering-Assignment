@@ -211,7 +211,6 @@ public class Testing  {
     {
         acc_db.addAccount(acc);
         acc_db.addAccount(acc2);
-
         trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30);
 
         Thread.sleep(15000);
@@ -219,4 +218,11 @@ public class Testing  {
         Assert.assertEquals(true,trans_mang.processTransaction(acc.get_Account_Number(),acc2.get_Account_Number(),30));
     }
 
+
+    //Additional getters Test
+    @Test
+    public void getAccountNameTest()
+    {
+        Assert.assertEquals("Jacob&Leon",acc.get_Account_Name());
+    }
 }
