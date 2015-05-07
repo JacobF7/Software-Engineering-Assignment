@@ -131,6 +131,6 @@ public class TransactionManager
             return outcome;
         }
 
-        return outcome&&sub_outcome;
+        return sub_outcome;
     }
 }
