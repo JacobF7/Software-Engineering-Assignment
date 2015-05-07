@@ -1,6 +1,5 @@
 package com.LeonAndJacob.app;
 
-import static com.LeonAndJacob.app.AccountDatabase.*;
 
 /**
  * Created by jacobfalzon on 27/03/15.
@@ -15,8 +14,12 @@ public class Transaction
 
     private long amount;
 
+    private String name;
+
     public Transaction(AccountDatabase database_in,int source_Account_Number_In,int destination_Account_Number_In,long amount_in)
     {
+        this.name = "Atomic Transaction(No Name)";
+
         this.database = database_in;
 
         this.sourceAccountNumber=source_Account_Number_In;
@@ -24,6 +27,24 @@ public class Transaction
         this.destinationAccountNumber=destination_Account_Number_In;
 
         this.amount=amount_in;
+    }
+
+    public Transaction(String name_in, AccountDatabase database_in,int source_Account_Number_In,int destination_Account_Number_In,long amount_in)
+    {
+        this.name = name_in;
+
+        this.database = database_in;
+
+        this.sourceAccountNumber=source_Account_Number_In;
+
+        this.destinationAccountNumber=destination_Account_Number_In;
+
+        this.amount=amount_in;
+    }
+
+    public Transaction(String name_in)
+    {
+        this.name = name_in;
     }
 
     public boolean process()
@@ -55,8 +76,6 @@ public class Transaction
         {
             result= false;
         }
-
-
 
        return result;
     }

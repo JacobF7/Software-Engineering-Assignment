@@ -15,6 +15,7 @@ public class Testing  {
     AccountDatabase acc_db;
     Transaction trans;
     TransactionManager trans_mang;
+    CompoundTransaction ct,ct1;
 
 
     /*@BeforeClass
@@ -224,5 +225,92 @@ public class Testing  {
     public void getAccountNameTest()
     {
         Assert.assertEquals("Jacob&Leon",acc.get_Account_Name());
+    }
+
+
+
+    // -----------------------------------------Assignment Part 2-----------------------------------------------
+
+    //Compound Transaction Class Tests
+
+
+    // AddTransaction Method Test
+    @Test
+    public void CompoundTransactionAddTransactionTest()
+    {
+        ct = new CompoundTransaction("compound");
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        ct.addTransaction(new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),10));
+
+        ct.addTransaction(new Transaction("atomic2",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),40));
+
+        Assert.assertEquals(2, ct.getTransaction_list().size());
+    }
+
+    // process Method Test A
+    // Successful Compound Transaction
+    @Test
+    public void CompoundTransaction_processTestA()
+    {
+        ct = new CompoundTransaction("compound");
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        ct.addTransaction(new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),10));
+
+        ct.addTransaction(new Transaction("atomic2",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),40));
+
+        Assert.assertEquals(true, ct.process());
+    }
+
+    // process Method Test B
+    // Single Unsuccessful Transaction that fails the Compound Transaction
+    @Test
+    public void CompoundTransaction_processTestB()
+    {
+        ct = new CompoundTransaction("compound");
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        ct.addTransaction(new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),10001));
+
+        ct.addTransaction(new Transaction("atomic2",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),40));
+
+        Assert.assertEquals(false,ct.process());
+    }
+
+    // process Test Method Test C
+    // Empty Compound Transaction List should fail the Compound Transaction
+    @Test
+    public void CompoundTransaction_processTestC()
+    {
+        ct = new CompoundTransaction("compound");
+
+        Assert.assertEquals(false, ct.process());
+    }
+
+    //process Test Method Test D
+    //Complex Nested Compound Transaction Test
+    @Test
+    public void CompoundTransaction_processTestD()
+    {
+        ct = new CompoundTransaction("compound1");
+        ct1 = new CompoundTransaction("compound2");
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        ct.addTransaction(new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),100));
+
+        ct1.addTransaction(new Transaction("atomic2",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),40));
+
+        ct.addTransaction(ct1);
+
+        Assert.assertEquals(true,ct.process());
     }
 }
