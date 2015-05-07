@@ -67,6 +67,71 @@ public class TransactionManager
 
     public boolean processCompoundTransaction(CompoundTransaction trn_in)
     {
-       throw new UnsupportedOperationException();
+        boolean outcome = true;
+
+        boolean sub_outcome=true;
+
+        long current_time;
+
+        try
+        {
+            if (trn_in.process())
+            {
+                for (Transaction t : trn_in.getTransaction_list())
+                {
+                    if (t.getAmount() != -1)// if not a Compound Transaction
+                    {
+                        int i;
+
+                        for (i = 0; i < Transaction_Log.size(); i++)
+                        {
+                            current_time = System.currentTimeMillis();
+
+                            if (current_time - (Transaction_Log.get(i).get_Transaction_Time()) >= 15000)
+                            {
+                                Transaction_Log.remove(i);
+                            }
+                            else if ((t.getSourceAccountNumber() == Transaction_Log.get(i).get_sourceAccountNumber()) || (t.getDestinationAccountNumber() == Transaction_Log.get(i).get_destinationAccountNumber()))
+                            {
+                                Thread.sleep(15000 - (current_time - Transaction_Log.get(i).get_Transaction_Time()));
+                                break;
+                            }
+                        }
+
+                        //Process Item
+                        if (t.process())
+                        {
+                            this.numTransactionsProcessed++;
+
+                            LogItem add_Log_Item = new LogItem(t.getSourceAccountNumber(), t.getDestinationAccountNumber(), System.currentTimeMillis());
+
+                            Transaction_Log.add(add_Log_Item);
+                        }
+                        else
+                        {
+                            outcome = false;
+                            throw new Exception("Transaction Failed");
+                        }
+
+                    }
+                    else //if t is a compound transaction
+                    {
+                        sub_outcome =this.processCompoundTransaction((CompoundTransaction) t);
+                    }
+                }
+            }
+            else
+            {
+                outcome = false;
+                throw new Exception("Transaction Failed");
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+            return outcome;
+        }
+
+        return outcome&&sub_outcome;
     }
 }

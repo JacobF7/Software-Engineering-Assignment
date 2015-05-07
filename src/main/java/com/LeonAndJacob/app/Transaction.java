@@ -81,4 +81,20 @@ public class Transaction
 
        return result;
     }
+
+    public long getAmount()
+    {
+        return amount;
+    }
+
+    public int getSourceAccountNumber()
+    {
+        return sourceAccountNumber;
+    }
+
+    public int getDestinationAccountNumber()
+    {
+        return destinationAccountNumber;
+    }
+
 }
