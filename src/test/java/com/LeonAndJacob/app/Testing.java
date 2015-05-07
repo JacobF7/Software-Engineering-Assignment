@@ -254,7 +254,7 @@ public class Testing  {
     //process Method Test A
     //Non-Empty Compound Transaction
     @Test
-    public void CompoundTransaction_process_TestA() throws InterruptedException
+    public void CompoundTransaction_process_TestA()
     {
         ct = new CompoundTransaction("compound");
 
@@ -273,7 +273,7 @@ public class Testing  {
     //Empty Compound transaction
 
     @Test
-    public void CompoundTransaction_process_TestB() throws InterruptedException
+    public void CompoundTransaction_process_TestB()
     {
         ct = new CompoundTransaction("compound");
 
@@ -288,7 +288,7 @@ public class Testing  {
     // processCompoundTransaction Method Test A
     // Successful Compound Transaction
     @Test
-    public void processCompoundTransaction_TestA() throws InterruptedException {
+    public void processCompoundTransaction_TestA() throws Exception {
         ct = new CompoundTransaction("compound");
 
         acc_db.addAccount(acc);
@@ -305,8 +305,7 @@ public class Testing  {
     // processCompoundTransaction Method Test B
     // Single Unsuccessful Transaction that fails the Compound Transaction
     @Test
-    public void processCompoundTransaction_TestB() throws InterruptedException
-    {
+    public void processCompoundTransaction_TestB() throws Exception {
         ct = new CompoundTransaction("compound");
 
         acc_db.addAccount(acc);
@@ -322,8 +321,7 @@ public class Testing  {
     // processCompoundTransaction Method Test C
     // Empty Compound Transaction List should fail the Compound Transaction
     @Test
-    public void processCompoundTransaction_TestC() throws InterruptedException
-    {
+    public void processCompoundTransaction_TestC() throws Exception {
         ct = new CompoundTransaction("compound");
 
         Assert.assertEquals(false, trans_mang.processCompoundTransaction(ct));
@@ -333,15 +331,18 @@ public class Testing  {
     //processCompoundTransaction Method Test D
     //Complex Nested Compound Transaction Test
     @Test
-    public void processCompoundTransaction_TestD() throws InterruptedException {
+    public void processCompoundTransaction_TestD() throws Exception {
         ct = new CompoundTransaction("compound1");
         ct1 = new CompoundTransaction("compound2");
 
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+
         acc_db.addAccount(acc);
         acc_db.addAccount(acc2);
+        acc_db.addAccount(acc3);
 
         ct.addTransaction(new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),100));
-        ct.addTransaction(new Transaction("atomic2", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),100));
+        ct.addTransaction(new Transaction("atomic2", acc_db,acc3.get_Account_Number(),acc2.get_Account_Number(),100));
 
         ct1.addTransaction(new Transaction("atomic3",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),200));
 

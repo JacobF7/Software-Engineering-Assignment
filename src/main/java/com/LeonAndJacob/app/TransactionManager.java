@@ -65,7 +65,7 @@ public class TransactionManager
         return outcome;
     }
 
-    public boolean processCompoundTransaction(CompoundTransaction trn_in)
+    public boolean processCompoundTransaction(CompoundTransaction trn_in) throws Exception
     {
         boolean outcome = true;
 
@@ -97,7 +97,6 @@ public class TransactionManager
                                 break;
                             }
                         }
-
                         //Process Item
                         if (t.process())
                         {
