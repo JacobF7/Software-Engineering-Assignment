@@ -17,7 +17,7 @@ public class CompoundTransaction extends Transaction {
 
     public void addTransaction(Transaction trans_in)
     {
-        throw new UnsupportedOperationException();
+        transaction_list.add(trans_in);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class CompoundTransaction extends Transaction {
 
     public List<Transaction> getTransaction_list()
     {
-        throw new UnsupportedOperationException();//return transaction_list;
+        return transaction_list;
     }
 
 }
