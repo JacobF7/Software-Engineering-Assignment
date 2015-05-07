@@ -236,7 +236,7 @@ public class Testing  {
 
     // AddTransaction Method Test
     @Test
-    public void CompoundTransactionAddTransactionTest()
+    public void CompoundTransaction_AddTransactionTest()
     {
         ct = new CompoundTransaction("compound");
 
@@ -250,10 +250,11 @@ public class Testing  {
         Assert.assertEquals(2, ct.getTransaction_list().size());
     }
 
-    // process Method Test A
-    // Successful Compound Transaction
+
+    //process Method Test A
+    //Non-Empty Compound Transaction
     @Test
-    public void CompoundTransaction_processTestA()
+    public void CompoundTransaction_process_TestA() throws InterruptedException
     {
         ct = new CompoundTransaction("compound");
 
@@ -267,10 +268,44 @@ public class Testing  {
         Assert.assertEquals(true, ct.process());
     }
 
-    // process Method Test B
+
+    //process Method Test B
+    //Empty Compound transaction
+
+    @Test
+    public void CompoundTransaction_process_TestB() throws InterruptedException
+    {
+        ct = new CompoundTransaction("compound");
+
+        Assert.assertEquals(false, ct.process());
+    }
+
+
+
+
+    // Transaction Manager Class Tests
+
+    // processCompoundTransaction Method Test A
+    // Successful Compound Transaction
+    @Test
+    public void processCompoundTransaction_TestA() throws InterruptedException {
+        ct = new CompoundTransaction("compound");
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        ct.addTransaction(new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),10));
+
+        ct.addTransaction(new Transaction("atomic2",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),40));
+
+        Assert.assertEquals(true, trans_mang.processCompoundTransaction(ct));
+    }
+
+
+    // processCompoundTransaction Method Test B
     // Single Unsuccessful Transaction that fails the Compound Transaction
     @Test
-    public void CompoundTransaction_processTestB()
+    public void processCompoundTransaction_TestB() throws InterruptedException
     {
         ct = new CompoundTransaction("compound");
 
@@ -281,24 +316,24 @@ public class Testing  {
 
         ct.addTransaction(new Transaction("atomic2",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),40));
 
-        Assert.assertEquals(false,ct.process());
+        Assert.assertEquals(false,trans_mang.processCompoundTransaction(ct));
     }
 
-    // process Test Method Test C
+    // processCompoundTransaction Method Test C
     // Empty Compound Transaction List should fail the Compound Transaction
     @Test
-    public void CompoundTransaction_processTestC()
+    public void processCompoundTransaction_TestC() throws InterruptedException
     {
         ct = new CompoundTransaction("compound");
 
-        Assert.assertEquals(false, ct.process());
+        Assert.assertEquals(false, trans_mang.processCompoundTransaction(ct));
     }
 
-    //process Test Method Test D
+
+    //processCompoundTransaction Method Test D
     //Complex Nested Compound Transaction Test
     @Test
-    public void CompoundTransaction_processTestD()
-    {
+    public void processCompoundTransaction_TestD() throws InterruptedException {
         ct = new CompoundTransaction("compound1");
         ct1 = new CompoundTransaction("compound2");
 
@@ -306,11 +341,13 @@ public class Testing  {
         acc_db.addAccount(acc2);
 
         ct.addTransaction(new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),100));
+        ct.addTransaction(new Transaction("atomic2", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),100));
 
-        ct1.addTransaction(new Transaction("atomic2",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),40));
+        ct1.addTransaction(new Transaction("atomic3",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),200));
 
         ct.addTransaction(ct1);
 
-        Assert.assertEquals(true,ct.process());
+        Assert.assertEquals(true,trans_mang.processCompoundTransaction(ct));
     }
+
 }

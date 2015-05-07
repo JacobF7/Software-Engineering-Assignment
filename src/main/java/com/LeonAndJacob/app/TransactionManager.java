@@ -64,4 +64,9 @@ public class TransactionManager
 
         return outcome;
     }
+
+    public boolean processCompoundTransaction(CompoundTransaction trn_in)
+    {
+       throw new UnsupportedOperationException();
+    }
 }

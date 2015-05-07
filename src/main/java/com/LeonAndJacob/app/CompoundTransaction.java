@@ -23,7 +23,26 @@ public class CompoundTransaction extends Transaction {
     @Override
     public boolean process()
     {
-        throw new UnsupportedOperationException();
+        boolean outcome=true;
+
+
+        if (this.transaction_list.isEmpty())
+        {
+            outcome=false;
+
+        }
+
+        /*for (Transaction t : this.transaction_list)
+        {
+            if(!t.process())
+            {
+                outcome=false;
+                throw new Exception("Transaction Failed");
+            }
+
+        }*/
+
+        return outcome;
     }
 
     public List<Transaction> getTransaction_list()

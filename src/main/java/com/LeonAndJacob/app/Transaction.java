@@ -42,9 +42,11 @@ public class Transaction
         this.amount=amount_in;
     }
 
+    //Constructor Ensures Compound Transactions Are Unique
     public Transaction(String name_in)
     {
         this.name = name_in;
+        this.amount=-1;
     }
 
     public boolean process()
