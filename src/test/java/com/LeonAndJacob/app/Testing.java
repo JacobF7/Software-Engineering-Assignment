@@ -290,7 +290,8 @@ public class Testing  {
     // processCompoundTransaction Method Test A
     // Successful Compound Transaction
     @Test
-    public void processCompoundTransaction_TestA() throws Exception {
+    public void processCompoundTransaction_TestA() throws Exception
+    {
         ct = new CompoundTransaction("compound");
 
         acc_db.addAccount(acc);
@@ -359,6 +360,30 @@ public class Testing  {
     @Test
     public void preDefine_TestA()
     {
+        //list of prerequisites,i.e. source accounts and destination accounts
+        //source accounts created and added to db
+        Account Deposit_High_Risk_srcAccount = new Account(3123, "Deposit_High_Risk_srcAccount", 10000);
+        Account Deposit_Low_Risk_srcAccount = new Account(8665, "Deposit_Low_Risk_srcAccount", 10000);
+        Account Main_High_Risk_srcAccount = new Account(3143, "Main_High_Risk_srcAccount", 10000);
+        Account Main_Low_Risk_srcAccount = new Account(3133, "Main_Low_Risk_srcAccount", 10000);
+        Account Commission_High_Risk_srcAccount = new Account(6565, "Commission_High_Risk_srcAccount", 10000);
+        Account Commission_Low_Risk_srcAccount = new Account(6588, "Commission_Low_Risk_srcAccount", 10000);
+        acc_db.addAccount(Deposit_High_Risk_srcAccount);
+        acc_db.addAccount(Deposit_Low_Risk_srcAccount);
+        acc_db.addAccount(Main_High_Risk_srcAccount);
+        acc_db.addAccount(Main_Low_Risk_srcAccount);
+        acc_db.addAccount(Commission_High_Risk_srcAccount);
+        acc_db.addAccount(Commission_Low_Risk_srcAccount);
+
+        //create and add destination accounts
+        Account Commission_High_Risk_destAccount = new Account(4444, "Commission_High_Risk_destAccount", 10000);
+        Account Commission_Low_Risk_destAccount = new Account(4445, "Commission_Low_Risk_destAccount", 10000);
+        acc_db.addAccount(Commission_High_Risk_destAccount);
+        acc_db.addAccount(Commission_Low_Risk_destAccount);
+
+
+
+        //adding Main Transaction Destination Accounts to database
         acc_db.addAccount(acc);
         acc_db.addAccount(acc2);
 
@@ -374,8 +399,10 @@ public class Testing  {
         mainAmounts.add(main_amount1);
         mainAmounts.add(main_amount2);
 
+        //Creating and Adding Deposit Destination Account to Database
         acc3 = new Account(3,"Jacob&Leon3",2000);
         long depAmount = 20;
+        acc_db.addAccount(acc3);
 
         Assert.assertEquals(true,ct.preDefine("high",acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
@@ -385,6 +412,28 @@ public class Testing  {
     @Test
     public void preDefine_TestB()
     {
+        //list of prerequisites,i.e. source accounts and destination accounts
+        //source accounts created and added to db
+        Account Deposit_High_Risk_srcAccount = new Account(3123, "Deposit_High_Risk_srcAccount", 10000);
+        Account Deposit_Low_Risk_srcAccount = new Account(8665, "Deposit_Low_Risk_srcAccount", 10000);
+        Account Main_High_Risk_srcAccount = new Account(3143, "Main_High_Risk_srcAccount", 10000);
+        Account Main_Low_Risk_srcAccount = new Account(3133, "Main_Low_Risk_srcAccount", 10000);
+        Account Commission_High_Risk_srcAccount = new Account(6565, "Commission_High_Risk_srcAccount", 10000);
+        Account Commission_Low_Risk_srcAccount = new Account(6588, "Commission_Low_Risk_srcAccount", 10000);
+        acc_db.addAccount(Deposit_High_Risk_srcAccount);
+        acc_db.addAccount(Deposit_Low_Risk_srcAccount);
+        acc_db.addAccount(Main_High_Risk_srcAccount);
+        acc_db.addAccount(Main_Low_Risk_srcAccount);
+        acc_db.addAccount(Commission_High_Risk_srcAccount);
+        acc_db.addAccount(Commission_Low_Risk_srcAccount);
+
+        //create and add destination accounts
+        Account Commission_High_Risk_destAccount = new Account(4444, "Commission_High_Risk_destAccount", 10000);
+        Account Commission_Low_Risk_destAccount = new Account(4445, "Commission_Low_Risk_destAccount", 10000);
+        acc_db.addAccount(Commission_High_Risk_destAccount);
+        acc_db.addAccount(Commission_Low_Risk_destAccount);
+
+        //adding Main Transaction Destination Accounts to database
         acc_db.addAccount(acc);
         acc_db.addAccount(acc2);
 
@@ -400,8 +449,10 @@ public class Testing  {
         mainAmounts.add(main_amount1);
         mainAmounts.add(main_amount2);
 
+        //Creating and Adding Deposit Destination Account to Database
         acc3 = new Account(3,"Jacob&Leon3",2000);
         long depAmount = 20;
+        acc_db.addAccount(acc3);
 
         Assert.assertEquals(true,ct.preDefine("low",acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
@@ -411,6 +462,28 @@ public class Testing  {
     @Test
     public void preDefine_TestC()
     {
+        //list of prerequisites,i.e. source accounts and destination accounts
+        //source accounts created and added to db
+        Account Deposit_High_Risk_srcAccount = new Account(3123, "Deposit_High_Risk_srcAccount", 10000);
+        Account Deposit_Low_Risk_srcAccount = new Account(8665, "Deposit_Low_Risk_srcAccount", 10000);
+        Account Main_High_Risk_srcAccount = new Account(3143, "Main_High_Risk_srcAccount", 10000);
+        Account Main_Low_Risk_srcAccount = new Account(3133, "Main_Low_Risk_srcAccount", 10000);
+        Account Commission_High_Risk_srcAccount = new Account(6565, "Commission_High_Risk_srcAccount", 10000);
+        Account Commission_Low_Risk_srcAccount = new Account(6588, "Commission_Low_Risk_srcAccount", 10000);
+        acc_db.addAccount(Deposit_High_Risk_srcAccount);
+        acc_db.addAccount(Deposit_Low_Risk_srcAccount);
+        acc_db.addAccount(Main_High_Risk_srcAccount);
+        acc_db.addAccount(Main_Low_Risk_srcAccount);
+        acc_db.addAccount(Commission_High_Risk_srcAccount);
+        acc_db.addAccount(Commission_Low_Risk_srcAccount);
+
+        //create and add destination accounts
+        Account Commission_High_Risk_destAccount = new Account(4444, "Commission_High_Risk_destAccount", 10000);
+        Account Commission_Low_Risk_destAccount = new Account(4445, "Commission_Low_Risk_destAccount", 10000);
+        acc_db.addAccount(Commission_High_Risk_destAccount);
+        acc_db.addAccount(Commission_Low_Risk_destAccount);
+
+        //adding Main Transaction Destination Accounts to database
         acc_db.addAccount(acc);
         acc_db.addAccount(acc2);
 
@@ -426,10 +499,12 @@ public class Testing  {
         mainAmounts.add(main_amount1);
         mainAmounts.add(main_amount2);
 
+        //Creating and Adding Deposit Destination Account to Database
         acc3 = new Account(3,"Jacob&Leon3",2000);
         long depAmount = 20;
+        acc_db.addAccount(acc3);
 
-        Assert.assertEquals(true,ct.preDefine("Important",acc3,depAmount,mainDests,mainAmounts,acc_db));
+        Assert.assertEquals(false,ct.preDefine("Important",acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
 
     //preDefine Method Test D
@@ -437,6 +512,28 @@ public class Testing  {
     @Test
     public void preDefine_TestD()
     {
+        //list of prerequisites,i.e. source accounts and destination accounts
+        //source accounts created and added to db
+        Account Deposit_High_Risk_srcAccount = new Account(3123, "Deposit_High_Risk_srcAccount", 10000);
+        Account Deposit_Low_Risk_srcAccount = new Account(8665, "Deposit_Low_Risk_srcAccount", 10000);
+        Account Main_High_Risk_srcAccount = new Account(3143, "Main_High_Risk_srcAccount", 10000);
+        Account Main_Low_Risk_srcAccount = new Account(3133, "Main_Low_Risk_srcAccount", 10000);
+        Account Commission_High_Risk_srcAccount = new Account(6565, "Commission_High_Risk_srcAccount", 10000);
+        Account Commission_Low_Risk_srcAccount = new Account(6588, "Commission_Low_Risk_srcAccount", 10000);
+        acc_db.addAccount(Deposit_High_Risk_srcAccount);
+        acc_db.addAccount(Deposit_Low_Risk_srcAccount);
+        acc_db.addAccount(Main_High_Risk_srcAccount);
+        acc_db.addAccount(Main_Low_Risk_srcAccount);
+        acc_db.addAccount(Commission_High_Risk_srcAccount);
+        acc_db.addAccount(Commission_Low_Risk_srcAccount);
+
+        //create and add destination accounts
+        Account Commission_High_Risk_destAccount = new Account(4444, "Commission_High_Risk_destAccount", 10000);
+        Account Commission_Low_Risk_destAccount = new Account(4445, "Commission_Low_Risk_destAccount", 10000);
+        acc_db.addAccount(Commission_High_Risk_destAccount);
+        acc_db.addAccount(Commission_Low_Risk_destAccount);
+
+        //adding Main Transaction Destination Accounts to database
         acc_db.addAccount(acc);
         acc_db.addAccount(acc2);
 
@@ -446,14 +543,17 @@ public class Testing  {
         mainDests.add(acc);
         mainDests.add(acc2);
 
+        //Purposely Adding a Single amount to fail the preDefine Method
         List<Long> mainAmounts = new ArrayList<Long>();
         long main_amount1 = 130;
         mainAmounts.add(main_amount1);
 
+        //Creating and Adding Deposit Destination Account to Database
         acc3 = new Account(3,"Jacob&Leon3",2000);
         long depAmount = 20;
+        acc_db.addAccount(acc3);
 
-        Assert.assertEquals(true,ct.preDefine("High",acc3,depAmount,mainDests,mainAmounts,acc_db));
+        Assert.assertEquals(false,ct.preDefine("High",acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
 
 

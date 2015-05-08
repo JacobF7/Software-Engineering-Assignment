@@ -16,6 +16,8 @@ public class Transaction
 
     private String name;
 
+    private String risk;
+
     public Transaction(AccountDatabase database_in,int source_Account_Number_In,int destination_Account_Number_In,long amount_in)
     {
         this.name = "Atomic Transaction(No Name)";
@@ -95,6 +97,10 @@ public class Transaction
     public int getDestinationAccountNumber()
     {
         return destinationAccountNumber;
+    }
+
+    public void setRisk(String risk) {
+        this.risk = risk;
     }
 
 }
