@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
+import java.util.*;
+
 
 /**
  * Unit test for simple App.
@@ -350,5 +352,109 @@ public class Testing  {
 
         Assert.assertEquals(true,trans_mang.processCompoundTransaction(ct));
     }
+
+
+    //preDefine Method Test A
+    // High Risk Pre-defintion Transaction
+    @Test
+    public void preDefine_TestA()
+    {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        CompoundTransaction ct = new CompoundTransaction("High Risk Preset");
+
+        List<Account> mainDests = new ArrayList<Account>();
+        mainDests.add(acc);
+        mainDests.add(acc2);
+
+        List<Long> mainAmounts = new ArrayList<Long>();
+        long main_amount1 = 130;
+        long main_amount2=70;
+        mainAmounts.add(main_amount1);
+        mainAmounts.add(main_amount2);
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+        long depAmount = 20;
+
+        Assert.assertEquals(true,ct.preDefine("high",acc3,depAmount,mainDests,mainAmounts,acc_db));
+    }
+
+    //preDefine Method Test B
+    // Low Risk Pre-defintion Transaction
+    @Test
+    public void preDefine_TestB()
+    {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        CompoundTransaction ct = new CompoundTransaction("Low Risk Preset");
+
+        List<Account> mainDests = new ArrayList<Account>();
+        mainDests.add(acc);
+        mainDests.add(acc2);
+
+        List<Long> mainAmounts = new ArrayList<Long>();
+        long main_amount1 = 130;
+        long main_amount2=70;
+        mainAmounts.add(main_amount1);
+        mainAmounts.add(main_amount2);
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+        long depAmount = 20;
+
+        Assert.assertEquals(true,ct.preDefine("low",acc3,depAmount,mainDests,mainAmounts,acc_db));
+    }
+
+    //preDefine Method Test C
+    // No such type of Risk
+    @Test
+    public void preDefine_TestC()
+    {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        CompoundTransaction ct = new CompoundTransaction("No such Risk Preset");
+
+        List<Account> mainDests = new ArrayList<Account>();
+        mainDests.add(acc);
+        mainDests.add(acc2);
+
+        List<Long> mainAmounts = new ArrayList<Long>();
+        long main_amount1 = 130;
+        long main_amount2=70;
+        mainAmounts.add(main_amount1);
+        mainAmounts.add(main_amount2);
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+        long depAmount = 20;
+
+        Assert.assertEquals(true,ct.preDefine("Important",acc3,depAmount,mainDests,mainAmounts,acc_db));
+    }
+
+    //preDefine Method Test D
+    // List of Accounts and Amounts is not equivalent in terms of size
+    @Test
+    public void preDefine_TestD()
+    {
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+
+        CompoundTransaction ct = new CompoundTransaction("High Risk Preset");
+
+        List<Account> mainDests = new ArrayList<Account>();
+        mainDests.add(acc);
+        mainDests.add(acc2);
+
+        List<Long> mainAmounts = new ArrayList<Long>();
+        long main_amount1 = 130;
+        mainAmounts.add(main_amount1);
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+        long depAmount = 20;
+
+        Assert.assertEquals(true,ct.preDefine("High",acc3,depAmount,mainDests,mainAmounts,acc_db));
+    }
+
 
 }

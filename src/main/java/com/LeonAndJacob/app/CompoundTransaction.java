@@ -45,6 +45,11 @@ public class CompoundTransaction extends Transaction {
         return outcome;
     }
 
+    public boolean preDefine(String risk,Account depDestAccount, long depAmount ,List<Account> mainDestAccounts, List<Long> mainAmount, AccountDatabase db)
+    {
+        throw new UnsupportedOperationException();
+    }
+
     public List<Transaction> getTransaction_list()
     {
         return transaction_list;
