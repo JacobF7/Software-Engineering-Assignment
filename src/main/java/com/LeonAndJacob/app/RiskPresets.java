@@ -43,7 +43,20 @@ public class RiskPresets
 
     public boolean CustomRiskPreset(String risk_in, int depSrcAccount_in, int mainSrcAccount_in, int commSrcAccount_in,int commDestAccount_in,double comm_percentage_in)
     {
-       throw new UnsupportedOperationException();
+        //conflicting risk!
+        if(risk_in.equalsIgnoreCase("high") || risk_in.equalsIgnoreCase("low"))
+        {
+            return false;
+        }
+
+        this.risk_name = risk_in;
+        this.depSrcAccount = depSrcAccount_in;
+        this.mainSrcAccount = mainSrcAccount_in;
+        this.commSrcAccount = commSrcAccount_in;
+        this.commDestAccount = commDestAccount_in;
+        this.comm_percentage = comm_percentage_in;
+
+        return true;
     }
 
 }

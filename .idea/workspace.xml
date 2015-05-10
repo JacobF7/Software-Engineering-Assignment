@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ac603ec-3d61-4f29-9588-27b610802a7d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/RiskPresets.java" afterPath="$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/RiskPresets.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java" afterPath="$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java" />
     </list>
     <ignored path="LeonAndJacob-app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,18 +37,18 @@
       <file leaf-file-name="Testing.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7868" max-vertical-offset="8670">
-              <caret line="558" column="28" selection-start-line="558" selection-start-column="28" selection-end-line="558" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="8284" max-vertical-offset="8670">
+              <caret line="584" column="33" selection-start-line="584" selection-start-column="33" selection-end-line="584" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RiskPresets.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RiskPresets.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/RiskPresets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="825">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.87935656" vertical-offset="422" max-vertical-offset="1020">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="e#979#980#0" expanded="true" />
                 <element signature="e#995#996#0" expanded="true" />
@@ -56,10 +57,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompoundTransaction.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CompoundTransaction.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/CompoundTransaction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1099195" vertical-offset="666" max-vertical-offset="1860">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1487" max-vertical-offset="1860">
               <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
               <folding>
                 <element signature="e#3400#3401#0" expanded="true" />
@@ -850,6 +851,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.85330075" vertical-offset="356" max-vertical-offset="810">
           <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -890,32 +892,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/RiskPresets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="825">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#979#980#0" expanded="true" />
-            <element signature="e#995#996#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/LeonAndJacob/app/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7868" max-vertical-offset="8670">
-          <caret line="558" column="28" selection-start-line="558" selection-start-column="28" selection-end-line="558" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="8284" max-vertical-offset="8670">
+          <caret line="584" column="33" selection-start-line="584" selection-start-column="33" selection-end-line="584" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/CompoundTransaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1099195" vertical-offset="666" max-vertical-offset="1860">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1386" max-vertical-offset="1860">
           <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
           <folding>
             <element signature="e#3400#3401#0" expanded="true" />
             <element signature="e#3439#3440#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/LeonAndJacob/app/RiskPresets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87935656" vertical-offset="422" max-vertical-offset="1020">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#979#980#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
           </folding>
         </state>
       </provider>

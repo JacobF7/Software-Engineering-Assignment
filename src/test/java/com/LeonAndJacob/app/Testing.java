@@ -582,7 +582,7 @@ public class Testing  {
     public void RiskPresets_TestB()
     {
         RiskPresets preset = new RiskPresets();
-        Assert.assertEquals(true,preset.CustomRiskPreset("low",1,2,3,4,0.05));
+        Assert.assertEquals(false,preset.CustomRiskPreset("low",1,2,3,4,0.05));
     }
 
 }
