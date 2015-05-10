@@ -404,7 +404,9 @@ public class Testing  {
         long depAmount = 20;
         acc_db.addAccount(acc3);
 
-        Assert.assertEquals(true,ct.preDefine("high",acc3,depAmount,mainDests,mainAmounts,acc_db));
+        RiskPresets preset = new RiskPresets("high");
+
+        Assert.assertEquals(true,ct.preDefine(preset,acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
 
     //preDefine Method Test B
@@ -454,11 +456,13 @@ public class Testing  {
         long depAmount = 20;
         acc_db.addAccount(acc3);
 
-        Assert.assertEquals(true,ct.preDefine("low",acc3,depAmount,mainDests,mainAmounts,acc_db));
+        RiskPresets preset = new RiskPresets("low");
+
+        Assert.assertEquals(true,ct.preDefine(preset,acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
 
     //preDefine Method Test C
-    // No such type of Risk
+    // No such type of Risk since no CUSTOM RISK was Created
     @Test
     public void preDefine_TestC()
     {
@@ -504,7 +508,9 @@ public class Testing  {
         long depAmount = 20;
         acc_db.addAccount(acc3);
 
-        Assert.assertEquals(false,ct.preDefine("Important",acc3,depAmount,mainDests,mainAmounts,acc_db));
+        RiskPresets preset = new RiskPresets("Important");
+
+        Assert.assertEquals(false,ct.preDefine(preset,acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
 
     //preDefine Method Test D
@@ -553,8 +559,30 @@ public class Testing  {
         long depAmount = 20;
         acc_db.addAccount(acc3);
 
-        Assert.assertEquals(false,ct.preDefine("High",acc3,depAmount,mainDests,mainAmounts,acc_db));
+        RiskPresets preset = new RiskPresets("high");
+
+        Assert.assertEquals(false,ct.preDefine(preset,acc3,depAmount,mainDests,mainAmounts,acc_db));
     }
 
+
+    // RiskPresets Class Tests
+
+    // Custom Risk Preset Test A
+    // Valid New Preset ,i.e. name != high && name!= low
+    @Test
+    public void RiskPresets_TestA()
+    {
+        RiskPresets preset = new RiskPresets();
+        Assert.assertEquals(true,preset.CustomRiskPreset("meduim",1,2,3,4,0.05));
+    }
+
+    // Custom Risk Preset Test B
+    // Valid New Preset ,i.e. name != high && name!= low
+    @Test
+    public void RiskPresets_TestB()
+    {
+        RiskPresets preset = new RiskPresets();
+        Assert.assertEquals(true,preset.CustomRiskPreset("low",1,2,3,4,0.05));
+    }
 
 }

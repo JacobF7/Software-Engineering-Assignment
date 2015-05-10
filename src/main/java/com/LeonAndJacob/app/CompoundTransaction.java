@@ -45,37 +45,31 @@ public class CompoundTransaction extends Transaction {
         return outcome;
     }
 
-    public boolean preDefine(String risk,Account depDestAccount, long depAmount ,List<Account> mainDestAccounts, List<Long> mainAmount, AccountDatabase db)
+    public boolean preDefine(RiskPresets preset,Account depDestAccount, long depAmount ,List<Account> mainDestAccounts, List<Long> mainAmount, AccountDatabase db)
     {
         int depSrcAccount, mainSrcAccount, commSrcAccount,commDestAccount;
+        String risk;
         double comm_percentage;
 
-
-        if(risk.equalsIgnoreCase("high"))
+        if(preset.risk_name.equals("")) //no such preset or no custom preset created before-hand
         {
-            depSrcAccount = 3123;
-            mainSrcAccount = 3143;
-            commSrcAccount = 6565;
-            commDestAccount = 4444;
-            comm_percentage = 0.1;
-        }
-        else if(risk.equalsIgnoreCase("low"))
-        {
-            depSrcAccount = 8665;
-            mainSrcAccount = 3133;
-            commSrcAccount = 6588;
-            commDestAccount = 4445;
-            comm_percentage = 0.05;
+            return false;
         }
         else
         {
-            //in case of invalid risk
-            return false;
+            risk =preset.risk_name;
+            depSrcAccount = preset.depSrcAccount;
+            mainSrcAccount = preset.mainSrcAccount;
+            commSrcAccount = preset.commSrcAccount;
+            commDestAccount = preset.commDestAccount;
+            comm_percentage = preset.comm_percentage;
         }
+
+        //RISK NAME ATTRIBUTE IS ALWAYS IN LOWER CASE
 
         //Create Atomic Deposit Transaction
         Transaction dep = new Transaction("Deposit Transaction",db,depSrcAccount,depDestAccount.get_Account_Number(),depAmount);
-        dep.setRisk(risk.toLowerCase());
+        dep.setRisk(risk);
 
         //list of destination accounts must be equal to the number of amounts
         if(mainDestAccounts.size()!=mainAmount.size())
@@ -85,13 +79,13 @@ public class CompoundTransaction extends Transaction {
 
         //Creating Compound Main Transaction
         CompoundTransaction main = new CompoundTransaction("Main Compound");
-        main.setRisk(risk.toLowerCase());
+        main.setRisk(risk);
         int i =0;
         long total =0;
         for(Account a: mainDestAccounts)
         {
             Transaction m = new Transaction("Main Transaction",db,mainSrcAccount,a.get_Account_Number(),mainAmount.get(i));
-            m.setRisk(risk.toLowerCase());
+            m.setRisk(risk);
             main.addTransaction(m);
             total+=mainAmount.get(i);
             i++;
@@ -100,10 +94,10 @@ public class CompoundTransaction extends Transaction {
 
         //Commission Transaction being created
         CompoundTransaction comm = new CompoundTransaction("Commission Compound");
-        comm.setRisk(risk.toLowerCase());
+        comm.setRisk(risk);
 
         Transaction comm_atomic_transaction = new Transaction("Commission Transaction",db,commSrcAccount,commDestAccount,(long)(comm_percentage*total));
-        comm_atomic_transaction.setRisk(risk.toLowerCase());
+        comm_atomic_transaction.setRisk(risk);
         comm.addTransaction(comm_atomic_transaction);
 
 
@@ -111,7 +105,7 @@ public class CompoundTransaction extends Transaction {
         List<Transaction> transactionslist = this.getTransaction_list() ;
         transactionslist = new ArrayList<Transaction>();
 
-        this.setRisk(risk.toLowerCase());
+        this.setRisk(risk);
         this.addTransaction(dep);
         this.addTransaction(main);
         this.addTransaction(comm);
