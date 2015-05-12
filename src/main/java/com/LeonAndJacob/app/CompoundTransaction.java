@@ -150,7 +150,11 @@ public class CompoundTransaction extends Transaction {
 
     public List<Transaction> Sort_Descending()
     {
-        throw new UnsupportedOperationException();
+        List<Transaction> result = this.Sort_Ascending();
+
+        Collections.reverse(result);
+
+        return result;
     }
 
     public List<Transaction> FilterBySrcAccount(int src_num)

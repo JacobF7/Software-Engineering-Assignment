@@ -695,9 +695,9 @@ public class Testing  {
         List<Transaction> output = ct.Sort_Descending();
 
         Assert.assertEquals(3,output.size());
-        Assert.assertEquals(atomic3,output.get(2));
+        Assert.assertEquals(atomic3,output.get(0));
         Assert.assertEquals(atomic,output.get(1));
-        Assert.assertEquals(atomic2,output.get(0));
+        Assert.assertEquals(atomic2,output.get(2));
     }
 
     //Testing FilterBySrcAccount
