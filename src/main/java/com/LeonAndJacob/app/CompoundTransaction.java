@@ -159,7 +159,17 @@ public class CompoundTransaction extends Transaction {
 
     public List<Transaction> FilterBySrcAccount(int src_num)
     {
-        throw new UnsupportedOperationException();
+        List<Transaction> result = this.traverse();
+
+        for(Transaction t: result)
+        {
+            if(t.getSourceAccountNumber()!=src_num)
+            {
+                result.remove(t);
+            }
+        }
+
+        return result;
     }
 
     public List<Transaction> getTransaction_list()
