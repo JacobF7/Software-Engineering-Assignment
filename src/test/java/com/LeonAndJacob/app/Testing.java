@@ -625,8 +625,9 @@ public class Testing  {
         desired_output.add(atomic3);
 
 
-        Assert.assertEquals(desired_output,ct1.traverse());
-
+        Assert.assertEquals(true,ct.traverse().contains(atomic));
+        Assert.assertEquals(true,ct.traverse().contains(atomic2));
+        Assert.assertEquals(true,ct.traverse().contains(atomic3));
     }
 
 

@@ -84,6 +84,10 @@ public class Transaction
        return result;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public long getAmount()
     {
         return amount;

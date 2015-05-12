@@ -116,7 +116,23 @@ public class CompoundTransaction extends Transaction {
 
     public List<Transaction> traverse()
     {
-        throw new UnsupportedOperationException();
+        List<Transaction> result = new ArrayList<Transaction>();
+
+        for(Transaction t_iterate: this.getTransaction_list())
+        {
+            if (t_iterate instanceof CompoundTransaction)
+            {
+                CompoundTransaction ct_iterate = (CompoundTransaction) t_iterate;
+                result.addAll(ct_iterate.traverse());
+            }
+            else
+            {
+                result.add(t_iterate);
+            }
+        }
+
+        return result;
+
     }
 
     public List<Transaction> getTransaction_list()
