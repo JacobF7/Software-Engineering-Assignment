@@ -137,7 +137,15 @@ public class CompoundTransaction extends Transaction {
 
     public List<Transaction> Sort_Ascending()
     {
-        throw new UnsupportedOperationException();
+        List<Transaction> result = this.traverse();
+
+        Collections.sort(result, new Comparator<Transaction>() {
+            public int compare(Transaction t1, Transaction t2) {
+                return (int)t1.getAmount() - (int)t2.getAmount();
+            }
+        });
+
+        return result;
     }
 
     public List<Transaction> Sort_Descending()
