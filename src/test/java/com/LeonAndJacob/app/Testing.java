@@ -592,7 +592,8 @@ public class Testing  {
 
 
     //Change 3 - Tests
-    //Testing Traversal
+
+    //Testing Traversal Method
     @Test
     public void Traversal_Test()
     {
@@ -624,11 +625,113 @@ public class Testing  {
         desired_output.add(atomic2);
         desired_output.add(atomic3);
 
-
+        Assert.assertEquals(desired_output.size(),ct.traverse().size());
         Assert.assertEquals(true,ct.traverse().contains(atomic));
         Assert.assertEquals(true,ct.traverse().contains(atomic2));
         Assert.assertEquals(true,ct.traverse().contains(atomic3));
     }
 
+
+    //Testing Sort Ascending
+    @Test
+    public void Sort_Ascending_Test()
+    {
+
+        ct = new CompoundTransaction("compound1");
+        ct1 = new CompoundTransaction("compound2");
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+        acc_db.addAccount(acc3);
+
+        Transaction atomic = new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),170);
+        Transaction atomic2 =new Transaction("atomic2", acc_db,acc3.get_Account_Number(),acc2.get_Account_Number(),30);
+        Transaction atomic3 = new Transaction("atomic3",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),400);
+
+        ct.addTransaction(atomic);
+        ct.addTransaction(atomic2);
+
+        ct1.addTransaction(atomic3);
+
+        ct.addTransaction(ct1);
+
+        //Desired Output
+        List<Transaction> output = ct.Sort_Ascending();
+
+        Assert.assertEquals(3,output.size());
+        Assert.assertEquals(atomic2,output.get(0));
+        Assert.assertEquals(atomic,output.get(1));
+        Assert.assertEquals(atomic3,output.get(2));
+    }
+
+    //Testing Sort Descending
+    @Test
+    public void Sort_Descending_Test()
+    {
+
+        ct = new CompoundTransaction("compound1");
+        ct1 = new CompoundTransaction("compound2");
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+        acc_db.addAccount(acc3);
+
+        Transaction atomic = new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),170);
+        Transaction atomic2 =new Transaction("atomic2", acc_db,acc3.get_Account_Number(),acc2.get_Account_Number(),30);
+        Transaction atomic3 = new Transaction("atomic3",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),400);
+
+        ct.addTransaction(atomic);
+        ct.addTransaction(atomic2);
+
+        ct1.addTransaction(atomic3);
+
+        ct.addTransaction(ct1);
+
+        //Desired Output
+        List<Transaction> output = ct.Sort_Descending();
+
+        Assert.assertEquals(3,output.size());
+        Assert.assertEquals(atomic3,output.get(2));
+        Assert.assertEquals(atomic,output.get(1));
+        Assert.assertEquals(atomic2,output.get(0));
+    }
+
+    //Testing FilterBySrcAccount
+    @Test
+    public void FilterBySrcAccount_Test()
+    {
+
+        ct = new CompoundTransaction("compound1");
+        ct1 = new CompoundTransaction("compound2");
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+        acc_db.addAccount(acc3);
+
+        Transaction atomic = new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),170);
+        Transaction atomic2 =new Transaction("atomic2", acc_db,acc3.get_Account_Number(),acc2.get_Account_Number(),30);
+        Transaction atomic3 = new Transaction("atomic3",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),400);
+
+        ct.addTransaction(atomic);
+        ct.addTransaction(atomic2);
+
+        ct1.addTransaction(atomic3);
+
+        ct.addTransaction(ct1);
+
+        //Desired Output
+        List<Transaction> output = ct.FilterBySrcAccount(acc.get_Account_Number());
+
+        Assert.assertEquals(2,output.size());
+        Assert.assertEquals(true,output.contains(atomic));
+        Assert.assertEquals(true,output.contains(atomic3));
+
+    }
 
 }

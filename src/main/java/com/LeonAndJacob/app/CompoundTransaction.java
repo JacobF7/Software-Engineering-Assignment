@@ -1,5 +1,7 @@
 package com.LeonAndJacob.app;
 
+import javafx.collections.transformation.SortedList;
+
 import java.util.*;
 
 /**
@@ -133,6 +135,21 @@ public class CompoundTransaction extends Transaction {
 
         return result;
 
+    }
+
+    public List<Transaction> Sort_Ascending()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    public List<Transaction> Sort_Descending()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    public List<Transaction> FilterBySrcAccount(int src_num)
+    {
+        throw new UnsupportedOperationException();
     }
 
     public List<Transaction> getTransaction_list()
