@@ -233,6 +233,8 @@ public class Testing  {
 
     // -----------------------------------------Assignment Part 2-----------------------------------------------
 
+    //1st Change
+
     //Compound Transaction Class Tests
 
 
@@ -354,6 +356,8 @@ public class Testing  {
         Assert.assertEquals(true,trans_mang.processCompoundTransaction(ct));
     }
 
+
+    //Change 2 Tests
 
     //preDefine Method Test A
     // High Risk Pre-defintion Transaction
@@ -584,5 +588,46 @@ public class Testing  {
         RiskPresets preset = new RiskPresets();
         Assert.assertEquals(false,preset.CustomRiskPreset("low",1,2,3,4,0.05));
     }
+
+
+
+    //Change 3 - Tests
+    //Testing Traversal
+    @Test
+    public void Traversal_Test()
+    {
+
+        ct = new CompoundTransaction("compound1");
+        ct1 = new CompoundTransaction("compound2");
+
+        acc3 = new Account(3,"Jacob&Leon3",2000);
+
+        acc_db.addAccount(acc);
+        acc_db.addAccount(acc2);
+        acc_db.addAccount(acc3);
+
+        Transaction atomic = new Transaction("atomic1", acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),100);
+        Transaction atomic2 =new Transaction("atomic2", acc_db,acc3.get_Account_Number(),acc2.get_Account_Number(),100);
+        Transaction atomic3 = new Transaction("atomic3",acc_db,acc.get_Account_Number(),acc2.get_Account_Number(),200);
+
+        ct.addTransaction(atomic);
+        ct.addTransaction(atomic2);
+
+        ct1.addTransaction(atomic3);
+
+        ct.addTransaction(ct1);
+
+        //Desired Output
+        List<Transaction> desired_output = new ArrayList<Transaction>();
+
+        desired_output.add(atomic);
+        desired_output.add(atomic2);
+        desired_output.add(atomic3);
+
+
+        Assert.assertEquals(desired_output,ct1.traverse());
+
+    }
+
 
 }

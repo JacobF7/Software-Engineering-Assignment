@@ -114,6 +114,11 @@ public class CompoundTransaction extends Transaction {
 
     }
 
+    public List<Transaction> traverse()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     public List<Transaction> getTransaction_list()
     {
         return transaction_list;
