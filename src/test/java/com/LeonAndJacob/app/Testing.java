@@ -593,7 +593,7 @@ public class Testing  {
 
     //Change 3 - Tests
 
-    //Testing Traversal Method
+    //Testing Traversal Method in Iterator
     @Test
     public void Traversal_Test()
     {
@@ -625,10 +625,12 @@ public class Testing  {
         desired_output.add(atomic2);
         desired_output.add(atomic3);
 
-        Assert.assertEquals(desired_output.size(),ct.traverse().size());
-        Assert.assertEquals(true,ct.traverse().contains(atomic));
-        Assert.assertEquals(true,ct.traverse().contains(atomic2));
-        Assert.assertEquals(true,ct.traverse().contains(atomic3));
+        Iterator my_iter = new Iterator(ct);
+
+        Assert.assertEquals(desired_output.size(),my_iter.getTraversal_result().size());
+        Assert.assertEquals(true,my_iter.getTraversal_result().contains(atomic));
+        Assert.assertEquals(true,my_iter.getTraversal_result().contains(atomic2));
+        Assert.assertEquals(true,my_iter.getTraversal_result().contains(atomic3));
     }
 
 

@@ -114,7 +114,7 @@ public class CompoundTransaction extends Transaction {
 
     }
 
-    public List<Transaction> traverse()
+    /* public List<Transaction> traverse()
     {
         List<Transaction> result = new ArrayList<Transaction>();
 
@@ -133,11 +133,15 @@ public class CompoundTransaction extends Transaction {
 
         return result;
 
-    }
+    }*/
 
     public List<Transaction> Sort_Ascending()
     {
-        List<Transaction> result = this.traverse();
+        List<Transaction> result;
+
+        Iterator iter = new Iterator(this);
+
+        result = iter.getTraversal_result();
 
         Collections.sort(result, new Comparator<Transaction>() {
             public int compare(Transaction t1, Transaction t2) {
@@ -159,13 +163,17 @@ public class CompoundTransaction extends Transaction {
 
     public List<Transaction> FilterBySrcAccount(int src_num)
     {
-        List<Transaction> result = this.traverse();
+        List<Transaction> result = this.Sort_Ascending();
 
-        for(Transaction t: result)
+        Iterator iter = new Iterator(this);
+
+        Transaction current;
+
+        while((current=iter.next())!=null)
         {
-            if(t.getSourceAccountNumber()!=src_num)
+            if (current.getSourceAccountNumber()==src_num)
             {
-                result.remove(t);
+                result.add(current);
             }
         }
 
