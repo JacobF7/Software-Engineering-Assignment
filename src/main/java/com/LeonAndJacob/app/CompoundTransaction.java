@@ -163,7 +163,7 @@ public class CompoundTransaction extends Transaction {
 
     public List<Transaction> FilterBySrcAccount(int src_num)
     {
-        List<Transaction> result = this.Sort_Ascending();
+        List<Transaction> result = new ArrayList<Transaction>();
 
         Iterator iter = new Iterator(this);
 
